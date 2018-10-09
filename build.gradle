@@ -1,0 +1,56 @@
+buildscript {
+    ext.kotlin_version = "1.3.0-rc-146"
+    ext.gradle_version = "3.2.0"
+    ext.navigation_version = "1.0.0-alpha06"
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "http://dl.bintray.com/kotlin/kotlin-eap"
+        }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$gradle_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "http://dl.bintray.com/kotlin/kotlin-eap"
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    versions = [
+            sdk         : [
+                    min    : 21,
+                    compile: 28
+            ],
+            kotlin      : kotlin_version,
+            gradle      : gradle_version,
+            ktx         : "1.0.0",
+            appcompat   : "1.0.0",
+            material    : "1.0.0",
+            constraint  : "2.0.0-alpha2",
+            navigation  : navigation_version,
+            lifecycle   : "2.0.0",
+            room        : "2.0.0",
+            leakcanary  : "1.5.4",
+            timber      : "4.7.1",
+            dagger      : "2.16",
+            rxjava      : "2.1.7",
+            rxandroid   : "2.0.2",
+            rxkotlin    : "2.1.0",
+            bindadapters: "3.0.0-beta3"
+    ]
+}

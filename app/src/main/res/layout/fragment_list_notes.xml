@@ -1,0 +1,73 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.list.ListNotesFragment">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="listener"
+            type="lv.chi.example.vmdagger.ui.list.ListNotesFragment" />
+
+        <variable
+            name="state"
+            type="lv.chi.example.vmdagger.ui.list.ListNotesViewModel.State" />
+
+        <variable
+            name="notesbinding"
+            type="me.tatarka.bindingcollectionadapter2.ItemBinding" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:padding="16dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/notes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{(state.notes.isEmpty() || state.loading) ? View.GONE : View.VISIBLE }"
+            app:itemBinding="@{notesbinding}"
+            app:items="@{state.notes}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/view_note_item" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:onClick="@{() -> listener.addNote()}"
+            android:src="@drawable/ic_add"
+            app:borderWidth="0dp"
+            app:elevation="2dp"
+            app:fabSize="normal" />
+
+        <TextView
+            android:id="@+id/empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="@string/notes_list_empty"
+            android:textSize="16sp"
+            android:visibility="@{(state.notes.isEmpty() &amp;&amp; !state.loading) ? View.VISIBLE : View.GONE, default=gone }"
+            tools:visibility="visible" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{state.loading ? View.VISIBLE : View.GONE, default=gone }"
+            tools:visibility="visible" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

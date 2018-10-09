@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ViewModel Dagger Example</string>
+    <string name="notes_list_empty">You don\'t have any saved notes</string>
+    <string name="note_hint">Write some of your thoughts</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+</resources>

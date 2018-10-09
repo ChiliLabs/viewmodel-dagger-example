@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/list_notes">
+
+    <fragment
+        android:id="@+id/list_notes"
+        android:name="lv.chi.example.vmdagger.ui.list.ListNotesFragment"
+        android:label="fragment_list_notes"
+        tools:layout="@layout/fragment_list_notes">
+        <action
+            android:id="@+id/action_list_notes_to_add_note"
+            app:destination="@id/add_note" />
+        <action
+            android:id="@+id/action_list_notes_to_view_note"
+            app:destination="@id/view_note" />
+    </fragment>
+    <fragment
+        android:id="@+id/add_note"
+        android:name="lv.chi.example.vmdagger.ui.add.AddNoteFragment"
+        android:label="fragment_add_note"
+        tools:layout="@layout/fragment_add_note" />
+    <fragment
+        android:id="@+id/view_note"
+        android:name="lv.chi.example.vmdagger.ui.view.ViewNoteFragment"
+        android:label="fragment_view_note"
+        tools:layout="@layout/fragment_view_note" >
+        <argument
+            android:name="note"
+            app:argType="lv.chi.example.vmdagger.domain.model.Note" />
+    </fragment>
+</navigation>

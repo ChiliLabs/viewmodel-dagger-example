@@ -1,0 +1,1 @@
+Example of android ViewModel injection with Dagger

@@ -1,0 +1,5 @@
+<resources>
+    <color name="primary">#ec2a2c</color>
+    <color name="primary_light">#ff6657</color>
+    <color name="primary_dark">#b10003</color>
+</resources>
